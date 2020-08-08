@@ -33,16 +33,13 @@
 
                         <select name="subject" id="subject">
                             <option value="" disabled="" hidden="">Selecione uma opção</option>
-                            <option value="1">Artes</option>
-                            <option value="2">Biologia</option>
-                            <option value="3">Ciências</option>
-                            <option value="4">Educação física</option>
-                            <option value="5">Física</option>
-                            <option value="6">Geografia</option>
-                            <option value="7">Hitória</option>
-                            <option value="8">Matemática</option>
-                            <option value="9">Português</option>
-                            <option value="10">Química</option>
+
+                            {%for subject in subjects %}
+
+                                <option value="{{loop.index}}" {{ "selected" if filters.subject == loop.index }}>{{subject}}</option>
+
+                            {%endfor%}
+
                         </select>
                     </div>
 
@@ -51,20 +48,20 @@
 
                         <select name="weekday" id="weekday">
                             <option value="" disabled="" hidden="">Selecione uma opção</option>
-                            <option value="0">Domingo</option>
-                            <option value="1">Segunda-feira</option>
-                            <option value="2">Terça-feira</option>
-                            <option value="3">Quarta-feira</option>
-                            <option value="4">Quinta-feira</option>
-                            <option value="5">Sexta-feira</option>
-                            <option value="6">Sábado</option>
+
+                            {%for weekday in weekdays %}
+
+                                <option value="{{loop.index0}}" {{ "selected" if filters.weekday == loop.index0 }}>{{weekday}}</option>
+                                
+                            {%endfor%}
+
                         </select>
                     </div>
 
                     <div class="input-block">
                         <label for="time">Hora</label>
 
-                        <input name="time" id="time" type="time">
+                        <input name="time" id="time" type="time" value="{{filters.time}}">
                     </div>
 
                     <button type="submit">Filtrar</button>
@@ -93,7 +90,7 @@
                         </p>
 
                         <a href="https://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=Tenho interesse na sua aula de {{proffy.subject}} {{proffy.name}}" class="button" target="_blan">
-                            <img src="/imagens/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
+                            <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Entrar em contato
                         </a>
                     </footer>
                 </article>
